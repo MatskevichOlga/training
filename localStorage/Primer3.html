@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id='result'></div>
+<script>
+//Пример, в котором запишем JavaScript объект в LocalStorage
+// 1 - JavaScript объект
+var obj = {
+  prop1: 'value1',
+  prop2: 'value2',
+  prop3: 'value3'};
+// 2 - Сохраним JavaScript объект в LocalStorage преобразовав его в строку JSON
+localStorage.setItem('myKey', JSON.stringify(obj));
+// 3 - Получим из LocalStorage значение по ключу «mykey», если он там есть (т.е. если его значение не равно null)
+if (localStorage.getItem('myKey')){
+      // 4 - Получим из LocalStorage значение по ключу «mykey», преобразуем его с помощью метода JSON.parse в JavaScript объект
+   obj=JSON.parse(localStorage.getItem('myKey'));
+}
+document.querySelector('#result').innerHTML = obj;
+// Пример, в котором проверим поддерживает ли браузер веб-хранилище?
+
+if (typeof(Storage) !== 'undefined') {
+    localStorage.setItem('bgColor', 'green');
+var bgColor=localStorage.getItem('bgColor');
+localStorage.removeItem('bgColor');
+  // код для localStorage
+} else {
+  alert('браузер не поддерживает веб-хранилище');
+}
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id='result'></div>
+<script>
+// Пример, в котором покажем как можно добавить дату к записям, 
+//а затем её использовать для их очистки (например, удалять записи, если со времени её записи прошло уже более 30 дней):
+// пример данных, которые мы получили из LocalStorage
+var
+  viewsItems = [
+    {
+      id: '1608467',
+      title: '6.26" Смартфон Huawei Nova 5T 128 ГБ фиолетовый',
+      timestamp: 1583020800000 // 01.03.2020
+    },
+    {
+      id: '1348312',
+      title: '6.1" Смартфон Huawei P30 128 ГБ синий',
+      timestamp: 1585872000000 // 03.04.2020
+    },
+    {
+      id: '1394820',
+      title: '6.1" Смартфон Apple iPhone 11 128 ГБ черный',
+      timestamp: 1586476800000 // 10.04.2020
+    }
+  ],
+  newViewsItems = [];
+// сформируем из массива viewsItems новый массив newViewsItems только из тех данных, timestamp которых не более 30 дней
+for (var i = 0, length = viewsItems.length; i < length; i++) {
+  if (viewsItems[i].timestamp > (Date.now() - 1000 * 60 * 60 * 24 * 30)) {
+    newViewsItems.push(viewsItems[i]);
+  }
+}
+
+// например, если текущая дата 11.04.2020, то в массив newViewsItems попадут все элементы, кроме первого
+
+// сохраним новый массив, очищенный от старых записей в LocalStorage
+localStorage.setItem('viewsItems', JSON.stringify(newViewsItems));
+//alert(`${newViewItems}`);
+</script>   
+</body>
+</html>
