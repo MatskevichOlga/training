@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id='result'></div>
+    <script>
+    localStorage.setItem('bgColor', 'green');
+//var bgColor=localStorage.getItem('bgColor');
+//localStorage.removeItem('bgColor');
+        //Пример, в котором перебём все элементы LocalStorage:
+var output='';
+//localStorage.length-количество элементов в хранилище
+for (i=0; i<localStorage.length; i++){
+    //localStorage.rey(i)-получение ключа элемента по индексу
+output +=(` Ключ: ${localStorage.key(i)} Значение: ${localStorage.getItem(localStorage.key(i))}\n`);
+}
+document.querySelector('#result').innerHTML = output;
+
+
+    </script>
+    
+</body>
+</html>
